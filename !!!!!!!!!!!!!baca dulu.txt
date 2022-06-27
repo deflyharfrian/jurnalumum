@@ -1,0 +1,18 @@
+apa yang baru di v2?
+
+> database diupdate lagi, ada perubahan penamaan tabel
+> tambah page transaksi
+> penambahan join tabel transaksi
+> interface form tambah transaksi
+
+
+apa yang baru di v4?
+> Mengambil value saldo awal dari pilih rekening
+> query sudah disederhanakan
+> interface form edit dan ambil datanya
+
+apa yang baru di v4?
+> DATEPICKERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+
+> tambahan, ambil data saldo pake JS
+>Jquery versi sama tapi kalo di embed gk bisa buat nampilin saldo doang xixixixixi
