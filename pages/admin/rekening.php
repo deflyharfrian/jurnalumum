@@ -66,7 +66,7 @@ if (isset($_POST['ok'])) {
                                 <td><?= $data['nominal'] ?></td>
                                 <td><?= $data['tgl_post'] ?></td>
                                 <td>
-                                    <a onclick="return confirm('yakin ingin menghapus data ini?');" href="hapus_kategori.php?kode_kategori=<?= $data['kode_kategori'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
+                                    <a onclick="return confirm('yakin ingin menghapus data ini?');" href="hapus_rekening.php?id_rek=<?= $data['id_rek'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
                                     <a data-toggle="modal" data-target="#mdledit_rekening<?= $data['id_rek'] ?>" href="#mdledit_rekening<?= $data['id_rek'] ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                     <button class="btn btn-success"><i class="fa fa-print"></i></button>
                                 </td>
