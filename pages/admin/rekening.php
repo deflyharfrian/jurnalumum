@@ -152,7 +152,7 @@ if (isset($_POST['ok'])) {
                                     <input type="text" class="form-control" value="<?= $data2['nama_rek'] ?>" name="nama" placeholder="Nama Rekening">
                                 </div>
                                 <div class="form-group" >
-                                    <label for="exampleInputPassword1">Nominal (Rp)</label>
+                                    <label for="exampleInputPassword1">Nominal (Rp) </label>
 
                                     <input type="text" class="form-control" readonly name="saldo" value="<?= $data2['nominal'] ?>" placeholder="saldo">
                                 </div>
