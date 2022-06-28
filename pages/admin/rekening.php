@@ -48,7 +48,7 @@ if (isset($_POST['ok'])) {
                         <tr>
                             <th>No</th>
                             <th>No Rekening</th>
-                            <th>Nama Rekening</th>
+                            <th>Nama Rekening / Bank</th>
                             <th>Nominal (Rp)</th>
                             <th>tanggal ditambahkan</th>
                         </tr>
@@ -67,7 +67,7 @@ if (isset($_POST['ok'])) {
                                 <td><?= $data['tgl_post'] ?></td>
                                 <td>
                                     <a onclick="return confirm('yakin ingin menghapus data ini?');" href="hapus_kategori.php?kode_kategori=<?= $data['kode_kategori'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
-                                    <a data-toggle="modal" data-target="#mdleditkategori<?= $data['kode_kategori'] ?>" href="#mdleditkategori<?= $data['kode_kategori'] ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                    <a data-toggle="modal" data-target="#mdledit_rekening<?= $data['id_rek'] ?>" href="#mdledit_rekening<?= $data['id_rek'] ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                     <button class="btn btn-success"><i class="fa fa-print"></i></button>
                                 </td>
                             </tr>
@@ -124,37 +124,37 @@ if (isset($_POST['ok'])) {
 
 
 
-        <?php $sql = mysqli_query($con, "SELECT * FROM tb_kategori ");
+        <?php $sql = mysqli_query($con, "SELECT * FROM tb_rekening ");
         while ($data2 = mysqli_fetch_array($sql)) {
 
 
         ?>
             <!-- Modal EDIT -->
-            <div class="modal fade" id="mdleditkategori<?= $data2['kode_kategori'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="mdledit_rekening<?= $data2['id_rek'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-primary">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-edit"></i> Edit Data Kategori</h5>
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-edit"></i> Edit Data Rekening</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="editkategori.php?kode_kategori=<?= $data2['kode_kategori'] ?>">
+                            <form method="POST" action="edit_rekening.php?id_rek=<?= $data2['id_rek'] ?>">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Kode Kategori</label>
-                                    <input type="text" readonly class="form-control" value="<?= $data2['kode_kategori'] ?>" name="kode_kategori" placeholder="Kode Kategori">
+                                    <label for="exampleInputEmail1">Nomor Rekening</label>
+                                    <input type="text" class="form-control" value="<?= $data2['no_rek'] ?>" name="no_rekening" placeholder="Nomor Rekening">
 
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Kategori</label>
-                                    <input type="text" class="form-control" value="<?= $data2['nama'] ?>" name="nama" placeholder="Nama Kategori">
+                                    <label for="exampleInputPassword1">Nama Rekening / Bank</label>
+                                    <input type="text" class="form-control" value="<?= $data2['nama_rek'] ?>" name="nama" placeholder="Nama Rekening">
                                 </div>
-                                <div class="form-group" style="display: none;">
-                                    <label for="exampleInputPassword1">Tanggal Post</label>
+                                <div class="form-group" >
+                                    <label for="exampleInputPassword1">Nominal</label>
 
-                                    <input type="text" class="form-control" name="tanggal_post" value="<?= date('Y-m-d H:i') ?>" placeholder="Nama Kategori">
+                                    <input type="text" class="form-control" readonly name="saldo" value="<?= $data2['nominal'] ?>" placeholder="saldo">
                                 </div>
 
                         </div>
