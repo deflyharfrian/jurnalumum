@@ -233,7 +233,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             //tambah halaman transaksi yaa...
             include "transaksi.php";
           } else if (isset($_GET["rekening"])) {
+            //rekening
             include "rekening.php";
+          } else if(isset($_GET['laporan'])) {
+            //laporan
+            include "laporan.php";
           } else {
             include "dashboard.php";
           }
