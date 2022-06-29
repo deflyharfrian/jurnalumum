@@ -124,12 +124,12 @@
                             ?>
                         </h3>
 
-                        <p>Laporan</p>
+                        <p>Buku Besar</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="index.php?laporan" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="index.php?buku_besar" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 

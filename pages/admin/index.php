@@ -235,9 +235,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           } else if (isset($_GET["rekening"])) {
             //rekening
             include "rekening.php";
-          } else if(isset($_GET['laporan'])) {
+          } else if(isset($_GET['buku_besar'])) {
             //laporan
-            include "laporan.php";
+            include "#";
           } else {
             include "dashboard.php";
           }
