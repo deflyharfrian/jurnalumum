@@ -230,13 +230,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
           if (isset($_GET["kategori"])) {
             include "kategori.php";
           } else if (isset($_GET["transaksi"])) {
-            //tambah halaman transaksi yaa...
+            //tambah halaman transaksi yaa...~
             include "transaksi.php";
           } else if (isset($_GET["rekening"])) {
-            //rekening
+            //rekening~
             include "rekening.php";
           } else if(isset($_GET['buku_besar'])) {
-            //laporan
+            //laporan???
             include "#";
           } else {
             include "dashboard.php";
