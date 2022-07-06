@@ -91,7 +91,7 @@ if (isset($_POST['ok'])) {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST">
+                        <form method="POST" action="tambah_rekening.php">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nomor Rekening</label>
                                 <input type="text" class="form-control" name="no_rek" placeholder="Nomor Rekening">

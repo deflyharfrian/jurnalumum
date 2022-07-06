@@ -1,15 +1,5 @@
 <?php
 error_reporting(0);
-if (isset($_POST['ok'])) {
-    $a = $_POST['kode_kategori'];
-    $b = $_POST['nama'];
-    $c = $_POST['tanggal_post'];
-
-    mysqli_query($con, "insert into tb_kategori values('$a','$b','$c')");
-    echo "<script>alert('data berhasil disimpan')</script>";
-}
-
-
 
 ?>
 
@@ -88,7 +78,7 @@ if (isset($_POST['ok'])) {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST">
+                        <form method="POST" action='tambah_kategori.php'>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Kode Kategori</label>
                                 <input type="text" class="form-control" name="kode_kategori" placeholder="Kode Kategori">
