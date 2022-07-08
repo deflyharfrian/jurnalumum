@@ -1,4 +1,4 @@
-<?
+<?php
 include "../../config/koneksi.php";
 $dbt = 0;
 $krdt= 0;
