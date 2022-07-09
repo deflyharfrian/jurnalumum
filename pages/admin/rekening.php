@@ -1,15 +1,5 @@
 <?php
 error_reporting(0);
-if (isset($_POST['ok'])) {
-    $norek = $_POST['no_rek'];
-    $nama_rek = $_POST['nama_rek'];
-    $saldo = $_POST['saldo'];
-    $tgl_post = $_POST['tanggal_post'];
-
-    mysqli_query($con, "insert into tb_rekening values('','$norek','$nama_rek', '$saldo', '$tgl_post')");
-    echo "<script>alert('data berhasil disimpan')</script>";
-}
-
 
 
 ?>
@@ -63,7 +53,7 @@ if (isset($_POST['ok'])) {
                                 <td><?= $i++; ?></td>
                                 <td><?= $data['no_rek'] ?></td>
                                 <td><?= $data['nama_rek'] ?></td>
-                                <td><?= $data['nominal'] ?></td>
+                                <td><?= "Rp ".number_format($data['nominal'], 2, ',', '.');  ?></td>
                                 <td><?= $data['tgl_post'] ?></td>
                                 <td>
                                     <a onclick="return confirm('yakin ingin menghapus data ini?');" href="hapus_rekening.php?id_rek=<?= $data['id_rek'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
@@ -102,7 +92,7 @@ if (isset($_POST['ok'])) {
                                 <input type="text" class="form-control" name="nama_rek" placeholder="Nama Rekening">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Nominal Awal / Saldo</label>
+                                <label for="exampleInputPassword1">Nominal Awal / Saldo Awal</label>
                                 <input type="text" class="form-control" name="saldo" placeholder="Nominal Awal / Saldo">
                                 <input type="text" class="form-control" hidden readonly name="tanggal_post" value="<?= date('Y-m-d H:i:s') ?>" placeholder="Nama Kategori">
                             </div>
