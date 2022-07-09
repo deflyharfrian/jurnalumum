@@ -4,9 +4,7 @@
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item ">Dashboard</li>
-            <li class="breadcrumb-item active">Transaksi</li>
+            <li class="breadcrumb-item active">Home</li>
         </ol>
     </div><!-- /.col -->
 </div><!-- /.row -->
@@ -129,7 +127,7 @@
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="index.php?buku_besar" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="index.php?bukubesar" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
