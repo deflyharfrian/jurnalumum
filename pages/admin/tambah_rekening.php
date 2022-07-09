@@ -7,7 +7,7 @@ if (isset($_POST['ok'])) {
     $tgl_post = $_POST['tanggal_post'];
 
     mysqli_query($con, "insert into tb_rekening values('','$norek','$nama_rek', '$saldo', '$tgl_post')");
-    echo "<script>alert('data berhasil disimpan');location.href='index.php?rekening;</script>";
+    echo "<script>alert('data berhasil disimpan');location.href='index.php?rekening';</script>";
 }
 
 
