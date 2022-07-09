@@ -12,7 +12,6 @@ error_reporting(0);
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item ">Kategori</li>
             <li class="breadcrumb-item active">Transaksi</li>
         </ol>
     </div><!-- /.col -->
@@ -67,10 +66,10 @@ error_reporting(0);
                                 <td><?= $data['keterangan'] ?></td>
                                 <td><?= $data['nama'] ?></td>
                                 <td><?= $data['no_rek'] . " | " . $data['nama_rek'] ?></td>
-                                <td><?= $data['debit'] ?></td>
-                                <td><?= $data['kredit'] ?></td>
-                                <td><?= $data['saldo_awal'] ?></td>
-                                <td><?= $data['saldo_akhir'] ?></td>
+                                <td><?="Rp ".number_format( $data['debit'], 2, ',', '.'); ?></td>
+                                <td><?= "Rp ".number_format( $data['kredit'], 2, ',', '.'); ?></td>
+                                <td><?= "Rp ".number_format( $data['saldo_awal'], 2, ',', '.');  ?></td>
+                                <td><?= "Rp ".number_format( $data['saldo_akhir'] , 2, ',', '.'); ?></td>
                                 <td>
                                    <!--- <a onclick="return confirm('yakin ingin menghapus data ini?');" href="hapus_kategori.php?id_transaksi=<?= $data['id_transaksi'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>-->
                                     <a data-toggle="modal" data-target="#mdledittransaksi<?= $data['id_transaksi'] ?>" href="#mdledittransaksi<?= $data['id_transaksi'] ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
