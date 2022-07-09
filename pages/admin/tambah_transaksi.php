@@ -11,7 +11,7 @@ if (isset($_POST['ok'])) {
     $d = $_POST['rekening'];
     $e = $_POST['saldo_awal'];
     $g = $_POST['tanggal_post'];
-    $h = $_SESSION['id_user'];
+    #$h = $_SESSION['id_user'];
 
     #logika debit dan kredit 
     $kr_db = $_POST['debit_kredit'];
@@ -28,7 +28,10 @@ if (isset($_POST['ok'])) {
      $krdt= 0;
     }
 
-    mysqli_query($con, "insert into tb_transaksi values('','$a','$b', '$c','$d','$dbt','$krdt','$e','$total_saldo','$g','$h')");
-    echo "<script>alert('data berhasil disimpan');location.href='index.php?transaksi;</script>";
+    mysqli_query($con, "insert into tb_transaksi values('','$a','$b', '$c','$d','$dbt','$krdt','$e','$total_saldo','$g','1')");
+    echo "<script>
+    alert('data berhasil disimpan');
+    location.href='index.php?transaksi';
+    </script>";
 }
 ?>
