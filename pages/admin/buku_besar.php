@@ -23,10 +23,16 @@ error_reporting(0);
 <!-- Main content -->
 <div class="content">
     <div class="container-fluid">
-
+        <?php 
+        $data_akun = mysqli_query($con,"SELECT * FROM tb_kategori AS kat
+        JOIN tb_transaksi AS tr ON kat.kode_kategori =  tr.id_kategori
+        GROUP BY tr.id_kategori ORDER BY kat.kode_kategori
+        ");
+        while($akun = mysqli_fetch_array($data_akun)){
+        ?>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Tabel (Nama Akun)</h3>
+                <h3 class="card-title">Nama Akun : <?php echo $akun['nama']; ?></h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -41,13 +47,9 @@ error_reporting(0);
                             <th>No</th>
                             <th>Tanggal</th>
                             <th>Keterangan</th>
-                            <th>Kategori</th>
-                            <th>Rekening</th>
+                            <th>Akun</th>
                             <th>Debit (Rp)</th>
                             <th>Kredit (Rp)</th>
-                            <th>Saldo Awal (Rp)</th>
-                            <th>Saldo Akhir (Rp)</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +59,8 @@ error_reporting(0);
                         $sql = mysqli_query($con, "SELECT * FROM tb_transaksi
                         LEFT JOIN tb_rekening AS rek ON tb_transaksi.id_rek = rek.id_rek
                         LEFT JOIN tb_user AS USER ON tb_transaksi.user_id = user.id_user
-                        LEFT JOIN tb_kategori AS kateg ON tb_transaksi.id_kategori = kateg.kode_kategori");
+                        LEFT JOIN tb_kategori AS kateg ON tb_transaksi.id_kategori = kateg.kode_kategori
+                        where kateg.nama like '%".$akun['nama']."%'");
                         while ($data = mysqli_fetch_array($sql)) {
                         ?>
                             <tr>
@@ -65,16 +68,8 @@ error_reporting(0);
                                 <td><?= $data['tanggal'] ?></td>
                                 <td><?= $data['keterangan'] ?></td>
                                 <td><?= $data['nama'] ?></td>
-                                <td><?= $data['no_rek'] . " | " . $data['nama_rek'] ?></td>
                                 <td><?="Rp ".number_format( $data['debit'], 2, ',', '.'); ?></td>
                                 <td><?= "Rp ".number_format( $data['kredit'], 2, ',', '.'); ?></td>
-                                <td><?= "Rp ".number_format( $data['saldo_awal'], 2, ',', '.');  ?></td>
-                                <td><?= "Rp ".number_format( $data['saldo_akhir'] , 2, ',', '.'); ?></td>
-                                <td>
-                                   <!--- <a onclick="return confirm('yakin ingin menghapus data ini?');" href="hapus_kategori.php?id_transaksi=<?= $data['id_transaksi'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>-->
-                                    <a data-toggle="modal" data-target="#mdledittransaksi<?= $data['id_transaksi'] ?>" href="#mdledittransaksi<?= $data['id_transaksi'] ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                    <button class="btn btn-success"><i class="fa fa-print"></i></button>
-                                </td>
                             </tr>
                         <?php  } ?>
                     </tbody>
@@ -83,6 +78,7 @@ error_reporting(0);
             </div>
             <!-- /.card-body -->
         </div>
+        <?php } ?>
         <!-- /.card -->
       
         <!-- Modal TAMBAH -->
