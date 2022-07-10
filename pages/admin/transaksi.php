@@ -41,7 +41,7 @@ error_reporting(0);
                             <th>No</th>
                             <th>Tanggal</th>
                             <th>Keterangan</th>
-                            <th>Kategori</th>
+                            <th>Akun</th>
                             <th>Rekening</th>
                             <th>Debit (Rp)</th>
                             <th>Kredit (Rp)</th>
