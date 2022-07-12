@@ -25,23 +25,11 @@ if ($cek == 1) {
         // buat session login dan username
         $_SESSION['id_user'] = $data['$id_user'];
         $_SESSION['level'] = $data['level'];
+        $_SESSION['username'] = $username;
         // alihkan ke halaman dashboard admin
         header("location:pages/admin/index.php");
 
-        // cek jika user login sebagai pegawai
-    } else if ($data['level'] == "kepsek") {
-        // buat session login dan username
-        $_SESSION['id_user'] = $data['$id_user'];
-        $_SESSION['level'] = $data['level'];
-        // alihkan ke halaman dashboard pegawai
-        header("location:index.php");
-
-        // cek jika user login sebagai pengurus
-    } else if ($data['level'] == "user") {
-        $_SESSION['id_user'] = $data['id_user'];
-        $_SESSION['level'] = $data['level'];
-        // alihkan ke halaman dashboard user
-        header("location:user.php");
+    
     } else {
 
         // alihkan ke halaman login kembali
