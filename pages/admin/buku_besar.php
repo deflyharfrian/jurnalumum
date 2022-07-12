@@ -88,7 +88,7 @@ error_reporting(0);
         }else{
         echo '<b>Semua Data Akun</b><br /><br />';
         echo'<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
-        <i class="fa fa-plus"></i> Tambah 
+        <i class="fa fa-plus"></i> Tambah Data
     </button>';
         $query = "SELECT * FROM tb_transaksi
         LEFT JOIN tb_rekening AS rek ON tb_transaksi.id_rek = rek.id_rek
