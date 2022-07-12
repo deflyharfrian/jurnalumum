@@ -22,13 +22,13 @@ error_reporting(0);
 <div class="content">
     <div class="container-fluid">
 
-        <div class="card">
-            <div class="card-header">
+        <div class="card" >
+            <div class="card-header bg-purple">
                 <h3 class="card-title">Tabel Data Kategori</h3>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#mdltambahkategori">
+            <div class="card-body" >
+                <button type="button" class="btn bg-purple mb-3" data-toggle="modal" data-target="#mdltambahkategori">
                     <i class="fa fa-plus"></i> Tambah Data
                 </button>
 
