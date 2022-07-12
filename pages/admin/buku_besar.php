@@ -26,6 +26,7 @@ basename($_SERVER['REQUEST_URI']);
         <div class="card">
             <div class="card-header">
                 <?php
+                 $queryt = "SELECT * FROM tb_kategori WHERE kode_kategori ='".$_GET['bukubesar']."'";
                  $sqlt = mysqli_query($con, $queryt);
                 $akun = mysqli_fetch_array($sqlt);
                 ?>
@@ -47,6 +48,7 @@ basename($_SERVER['REQUEST_URI']);
      
         <td>
         <td>
+        <div id="form-akun">
             <label>Akun</label><br>
             <select name="bukubesar" class="form-control" width="250px">
                 <option value="">Pilih</option>
@@ -70,6 +72,7 @@ basename($_SERVER['REQUEST_URI']);
         </table>
     </form>
     <br>
+
 
     <?php
     if($_GET['bukubesar']){
