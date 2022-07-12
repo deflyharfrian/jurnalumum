@@ -25,12 +25,12 @@ error_reporting(0);
     <div class="container-fluid">
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-purple">
                 <h3 class="card-title">Tabel Data Transaksi</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
+                <button type="button" class="btn bg-purple mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
                     <i class="fa fa-plus"></i> Tambah Transaksi
                 </button>
 
