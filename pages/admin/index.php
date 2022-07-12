@@ -167,7 +167,7 @@ body::-webkit-scrollbar-thumb {
             </li>
             <li class="nav-item">
               <a href="index.php?rekening" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="nav-icon fas fa-wallet"></i>
                 <p>
                   Rekening
                 </p>
