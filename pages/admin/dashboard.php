@@ -47,7 +47,7 @@
                         <p>Kategori</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fa fa-th"></i>
                     </div>
                     <a href="index.php?kategori" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -76,7 +76,7 @@
                         <p>Transaksi</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fa fa-dollar-sign"></i>
                     </div>
                     <a href="index.php?transaksi" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -104,7 +104,7 @@
                         <p>Rekening</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fa fa-wallet"></i>
                     </div>
                     <a href="index.php?rekening" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -134,7 +134,7 @@
                         <p>Buku Besar</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fa fa-book"></i>
                     </div>
                     <a href="index.php?bukubesar" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -165,7 +165,7 @@
                         <p>Buku Besar</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fa fa-book"></i>
                     </div>
                     <a href="index.php?transaksi" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
