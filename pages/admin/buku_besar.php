@@ -1,6 +1,5 @@
 <?php
 error_reporting(0);
-
 ?>
 <script src="jsmod.js"></script>
 <div class="row mb-2">
