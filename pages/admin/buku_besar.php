@@ -23,7 +23,7 @@ error_reporting(0);
 
     
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-purple">
                 <?php
                  $queryt = "SELECT * FROM tb_kategori WHERE kode_kategori ='".$_GET['bukubesar']."'";
                  $sqlt = mysqli_query($con, $queryt);
@@ -77,7 +77,7 @@ error_reporting(0);
     if($_GET['bukubesar']){
      
             echo '<b>Data Akun </b><br /><br />';
-        echo'<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
+        echo'<button type="button" class="btn bg-purple mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
         <i class="fa fa-plus"></i> Tambah 
     </button>';
             $query = "SELECT * FROM tb_transaksi
@@ -87,7 +87,7 @@ error_reporting(0);
             where kateg.kode_kategori ='".$_GET['bukubesar']."'";
         }else{
         echo '<b>Semua Data Akun</b><br /><br />';
-        echo'<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
+        echo'<button type="button" class="btn bg-purple mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
         <i class="fa fa-plus"></i> Tambah Data
     </button>';
         $query = "SELECT * FROM tb_transaksi
