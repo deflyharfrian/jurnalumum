@@ -15,10 +15,20 @@
 <!-- Main content -->
 <div class="content">
     <div class="container-fluid">
+    <div class="card">
+  <div class="card-body">
+   
+    <div class="alert bg-purple alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">Selamat Datang!</h4>
+    Hallo,<strong> <?= $profil['nama_lengkap'];?></strong> anda login sebagai <b><?= $profil['level'];?></b> .
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
         <div class="row">
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="small-box bg-purple">
+                <div class="small-box bg-info">
                     <div class="inner">
 
                         <h3>
@@ -164,4 +174,6 @@
 
 
 
+            </div>
+</div>
         </div>
