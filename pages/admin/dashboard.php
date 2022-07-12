@@ -15,8 +15,7 @@
 <!-- Main content -->
 <div class="content">
     <div class="container-fluid">
-    <div class="card">
-  <div class="card-body">
+
    
     <div class="alert bg-purple alert-dismissible fade show" role="alert">
     <h4 class="alert-heading">Selamat Datang!</h4>
@@ -174,6 +173,4 @@
 
 
 
-            </div>
-</div>
         </div>
