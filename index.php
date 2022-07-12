@@ -19,7 +19,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-purple">
             <div class="card-header text-center">
                 <a href="index2.html" class="h1"><b>Jurnal Umum</b></a>
             </div>
@@ -80,7 +80,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+                            <button type="submit" class="btn bg-purple btn-block">Masuk</button>
                         </div>
                         <!-- /.col -->
                     </div>
