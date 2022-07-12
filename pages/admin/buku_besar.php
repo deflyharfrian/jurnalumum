@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-basename($_SERVER['REQUEST_URI']);
+
 ?>
 <script src="jsmod.js"></script>
 <div class="row mb-2">
