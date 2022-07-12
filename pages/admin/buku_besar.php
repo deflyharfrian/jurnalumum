@@ -1,8 +1,6 @@
 <?php
 error_reporting(0);
-
-
-
+basename($_SERVER['REQUEST_URI']);
 ?>
 <script src="jsmod.js"></script>
 <div class="row mb-2">
@@ -23,23 +21,80 @@ error_reporting(0);
 <!-- Main content -->
 <div class="content">
     <div class="container-fluid">
-        <?php 
-        $data_akun = mysqli_query($con,"SELECT * FROM tb_kategori AS kat
-        JOIN tb_transaksi AS tr ON kat.kode_kategori =  tr.id_kategori
-        GROUP BY tr.id_kategori ORDER BY kat.kode_kategori
-        ");
-        while($akun = mysqli_fetch_array($data_akun)){
-        ?>
+
+    
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Nama Akun : <?php echo $akun['nama']; ?></h3>
+                <?php
+                 $sqlt = mysqli_query($con, $queryt);
+                $akun = mysqli_fetch_array($sqlt);
+                ?>
+                <h3 class="card-title">Nama Akun : <b> <?php
+                if($akun['nama'] == "" ){
+                    echo"Semua Akun";
+                }else{
+                     echo $akun['nama']; 
+                }
+                ?></b></h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
-                    <i class="fa fa-plus"></i> Tambah 
-                </button>
+                
 
+                <form method="get" action=""> 
+        <table border="0">
+        <tr>
+     
+        <td>
+        <td>
+            <label>Akun</label><br>
+            <select name="bukubesar" class="form-control" width="250px">
+                <option value="">Pilih</option>
+                <?php
+                $query = "SELECT * FROM tb_kategori"; 
+                $sql = mysqli_query($con, $query);
+                while($data = mysqli_fetch_array($sql)){
+                    echo '<option value="'.$data['kode_kategori'].'">'.$data['nama'].'</option>';
+                }
+                ?>
+                
+            </select>
+           
+        </div>
+        <td>
+        <label>&nbsp;</label><br>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Tampilkan</button>
+        <a href="index.php?bukubesar"> <div class="btn btn-danger" > <i class="fa fa-undo" aria-hidden="true"></i> Reset Filter</div></a>
+        </td>
+        </tr>
+        </table>
+    </form>
+    <br>
+
+    <?php
+    if($_GET['bukubesar']){
+     
+            echo '<b>Data Akun </b><br /><br />';
+        echo'<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
+        <i class="fa fa-plus"></i> Tambah 
+    </button>';
+            $query = "SELECT * FROM tb_transaksi
+            LEFT JOIN tb_rekening AS rek ON tb_transaksi.id_rek = rek.id_rek
+            LEFT JOIN tb_user AS USER ON tb_transaksi.user_id = user.id_user
+            LEFT JOIN tb_kategori AS kateg ON tb_transaksi.id_kategori = kateg.kode_kategori
+            where kateg.kode_kategori ='".$_GET['bukubesar']."'";
+        }else{
+        echo '<b>Semua Data Akun</b><br /><br />';
+        echo'<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
+        <i class="fa fa-plus"></i> Tambah 
+    </button>';
+        $query = "SELECT * FROM tb_transaksi
+        LEFT JOIN tb_rekening AS rek ON tb_transaksi.id_rek = rek.id_rek
+        LEFT JOIN tb_user AS USER ON tb_transaksi.user_id = user.id_user
+        LEFT JOIN tb_kategori AS kateg ON tb_transaksi.id_kategori = kateg.kode_kategori
+        where kateg.nama like '%".$akun['nama']."%'"; 
+    }
+    ?>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -54,33 +109,40 @@ error_reporting(0);
                     </thead>
                     <tbody>
                         <!--- Tampilkan Transaksi --->
-                        <?php
-                        $i = 1;
-                        $sql = mysqli_query($con, "SELECT * FROM tb_transaksi
-                        LEFT JOIN tb_rekening AS rek ON tb_transaksi.id_rek = rek.id_rek
-                        LEFT JOIN tb_user AS USER ON tb_transaksi.user_id = user.id_user
-                        LEFT JOIN tb_kategori AS kateg ON tb_transaksi.id_kategori = kateg.kode_kategori
-                        where kateg.nama like '%".$akun['nama']."%'");
-                        while ($data = mysqli_fetch_array($sql)) {
-                        ?>
-                            <tr>
-                                <td><?= $data['id_transaksi'] ?></td>
-                                <td><?= $data['tanggal'] ?></td>
-                                <td><?= $data['keterangan'] ?></td>
-                                <td><?= $data['nama'] ?></td>
-                                <td><?="Rp ".number_format( $data['debit'], 2, ',', '.'); ?></td>
-                                <td><?= "Rp ".number_format( $data['kredit'], 2, ',', '.'); ?></td>
-                            </tr>
-                        <?php  } ?>
+                      <tr>
+                                <?php
+					  $i = 1;
+    $sql = mysqli_query($con, $query);
+    $row = mysqli_num_rows($sql); 
+    if($row > 0){ 
+        while($data = mysqli_fetch_array($sql)){ 
+             echo "<td>".$i++."</td>";
+            echo "<td>".$data['tanggal']."</td>";
+            echo "<td>".$data['keterangan']."</td>";
+            echo "<td>".$data['nama']."</td>";
+            echo "<td>"."Rp ".number_format( $data['debit'], 2, ',', '.')."</td>";
+            echo "<td>"."Rp ".number_format( $data['kredit'], 2, ',', '.')."</td>";
+            echo "</tr>";
+        }
+    }else{ // Jika data tidak ada
+        echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
+    }
+    ?>
                     </tbody>
 
                 </table>
             </div>
             <!-- /.card-body -->
         </div>
-        <?php } ?>
+
+
+
+      
         <!-- /.card -->
       
+
+
+
         <!-- Modal TAMBAH -->
         <div class="modal fade" id="mdltambahtransaksi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
