@@ -66,23 +66,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
-        </li>
+       
       </ul>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
         <li class="nav-item">
+          
           <a class="nav-link" data-widget="navbar-search" href="#" role="button">
             <i class="fas fa-search"></i>
           </a>
+
           <div class="navbar-search-block">
-            <form class="form-inline">
+            <form class="form-inline" method="post" action="">
               <div class="input-group input-group-sm">
                 <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
@@ -115,7 +112,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-light-primary elevation-4">
+    <aside class="main-sidebar sidebar-light-purple elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
         <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
