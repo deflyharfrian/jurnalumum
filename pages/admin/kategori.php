@@ -5,12 +5,12 @@ error_reporting(0);
 
 <div class="row mb-2">
     <div class="col-sm-6">
-        <h1 class="m-0">Kategori</h1>
+        <h1 class="m-0">Daftar Akun</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Kategori</li>
+            <li class="breadcrumb-item active">Daftar Akun</li>
         </ol>
     </div><!-- /.col -->
 </div><!-- /.row -->
@@ -24,7 +24,7 @@ error_reporting(0);
 
         <div class="card" >
             <div class="card-header bg-purple">
-                <h3 class="card-title">Tabel Data Kategori</h3>
+                <h3 class="card-title">Tabel Data Akun</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body" >
@@ -36,8 +36,8 @@ error_reporting(0);
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode Kategori</th>
-                            <th>Kategori</th>
+                            <th>Kode Akun</th>
+                            <th>Akun</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
