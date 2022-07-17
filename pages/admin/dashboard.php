@@ -142,8 +142,8 @@
 
 
 
-            <!---tambah menu MONEY CPONVENTION--->
-            <div class="col-lg-12 col-12">
+            <!---tambah menu Jurnal Umum--->
+            <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-primary">
                     <div class="inner">
@@ -162,12 +162,12 @@
                             ?>
                         </h3>
 
-                        <p>Buku Besar</p>
+                        <p>Jurnal Umum</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-book"></i>
                     </div>
-                    <a href="index.php?transaksi" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="index.php?jurnalumum" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
