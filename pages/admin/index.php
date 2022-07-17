@@ -182,10 +182,10 @@ body::-webkit-scrollbar-thumb {
               </a>
             </li>
             <li class="nav-item">
-              <a href="index.php?bukubesar" class="nav-link">
+              <a href="index.php?jurnalumum" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
-                  Money - Convertion
+                  Jurnal Umum
                 </p>
               </a>
             </li>
@@ -228,7 +228,9 @@ body::-webkit-scrollbar-thumb {
           } else if(isset($_GET['bukubesar'])) {
             //buku besar ~
             include "buku_besar.php";
-          } else {
+          } else if(isset($_GET['jurnalumum'])){
+            include "jurnal_umum.php";
+           } else {
             include "dashboard.php";
           }
 
