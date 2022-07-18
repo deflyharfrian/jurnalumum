@@ -119,7 +119,7 @@ error_reporting(0);
                                     <option value="-">--pilih kategori--</option>
                                     <?php $sql_kategori = mysqli_query($con, "SELECT * FROM tb_kategori");
                                     while ($data_kategori = mysqli_fetch_array($sql_kategori)) { ?>
-                                        <option value="<?= $data_kategori['kode_kategori']; ?>"><?php echo $data_kategori['nama']; ?></option>
+                                        <option value="<?= $data_kategori['kode_kategori']; ?>"><?php echo $data_kategori['kode_kategori']." - ".$data_kategori['nama']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
