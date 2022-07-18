@@ -49,7 +49,7 @@
                     <div class="icon">
                         <i class="fa fa-th"></i>
                     </div>
-                    <a href="index.php?akun" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="index.php?kategori" class="small-box-footer">Info Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
