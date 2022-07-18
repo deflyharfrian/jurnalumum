@@ -37,7 +37,7 @@ error_reporting(0);
                         <tr>
                             <th>No</th>
                             <th>Kode Akun</th>
-                            <th>Akun</th>
+                            <th>Nama Akun</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -72,7 +72,7 @@ error_reporting(0);
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus"></i> Tambah Data Kategori</h5>
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus"></i> Tambah Data Akun</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -80,12 +80,12 @@ error_reporting(0);
                     <div class="modal-body">
                         <form method="POST" action='tambah_kategori.php'>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Kode Kategori</label>
+                                <label for="exampleInputEmail1">Kode Akun</label>
                                 <input type="text" class="form-control" name="kode_kategori" placeholder="Kode Kategori">
 
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Kategori</label>
+                                <label for="exampleInputPassword1">Nama Akun</label>
                                 <input type="text" class="form-control" name="nama" placeholder="Nama Kategori">
                             </div>
                             <div class="form-group">
@@ -121,7 +121,7 @@ error_reporting(0);
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-primary">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-edit"></i> Edit Data Kategori</h5>
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-edit"></i> Edit Data Akun</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -129,13 +129,13 @@ error_reporting(0);
                         <div class="modal-body">
                             <form method="POST" action="editkategori.php?kode_kategori=<?= $data2['kode_kategori'] ?>">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Kode Kategori</label>
+                                    <label for="exampleInputEmail1">Kode Akun</label>
                                     <input type="text" readonly class="form-control" value="<?= $data2['kode_kategori'] ?>" name="kode_kategori" placeholder="Kode Kategori">
 
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Kategori</label>
+                                    <label for="exampleInputPassword1">Nama Akun</label>
                                     <input type="text" class="form-control" value="<?= $data2['nama'] ?>" name="nama" placeholder="Nama Kategori">
                                 </div>
                                 <div class="form-group" style="display: none;">
