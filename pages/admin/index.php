@@ -150,7 +150,7 @@ body::-webkit-scrollbar-thumb {
               </a>
             </li>
             <li class="nav-item">
-              <a href="index.php?akun" class="nav-link">
+              <a href="index.php?kategori" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Daftar Akun
@@ -217,7 +217,7 @@ body::-webkit-scrollbar-thumb {
 
           <?php
 
-          if (isset($_GET["akun"])) {
+          if (isset($_GET["kategori"])) {
             include "kategori.php";
           } else if (isset($_GET["transaksi"])) {
             //tambah halaman transaksi yaa...~
