@@ -52,18 +52,41 @@ error_reporting(0);
                         $sql = mysqli_query($con, "SELECT * FROM tb_transaksi
                         LEFT JOIN tb_rekening AS rek ON tb_transaksi.id_rek = rek.id_rek
                         LEFT JOIN tb_user AS USER ON tb_transaksi.user_id = user.id_user
-                        LEFT JOIN tb_kategori AS kateg ON tb_transaksi.id_kategori = kateg.kode_kategori");
+                        LEFT JOIN tb_kategori AS kateg ON tb_transaksi.id_kategori = kateg.kode_kategori
+                        ORDER BY tb_transaksi.id_transaksi ASC");
                         while ($data = mysqli_fetch_array($sql)) {
+                            $data_table = array($tgl = $data['tanggal'], $nama = $data['nama'], $dbt = $data['debit'] , $krd = $data['kredit']);
+                            $data_table2 = array($tgl2 = $data['tanggal'], $nama2 = $data['nama'], $krd2 = $data['kredit'] , $dbt2 = $data['debit']);
+                            //foreach($data_table as $dt => $value)
                         ?>
                             <tr>
-                                <td><?= $data['tanggal'] ?></td>
-                                <td><?= $data['nama'] ?></td>
-                                <td><?="Rp ".number_format( $data['debit'], 2, ',', '.'); ?></td>
-                                <td><?= "Rp ".number_format( $data['kredit'], 2, ',', '.'); ?></td>
+                                <td><?= $tgl ?></td>
+                                <td><?= $nama ?></td>
+                                <td>Rp <?=number_format( $dbt, 2, ',', '.'); ?></td>
+                                <td>Rp <?=number_format( $krd, 2, ',', '.'); ?></td>
                             </tr>
-                        <?php  } ?>
+                            <tr>
+                                <td><?= $tgl2 ?></td>
+                                <td><?php if($nama2 == 'Kas'){echo 'Modal';}else{echo 'Kas';} ?></td>
+                                <td>Rp <?= number_format( $krd2, 2, ',', '.'); ?></td>
+                                <td>Rp <?= number_format( $dbt2, 2, ',', '.'); ?></td>
+                            </tr>
+                            <?php 
+                        $total_debit += $dbt+$krd2;
+                        $total_kredit += $krd+$dbt2;
+                        ?>
+                         <?php   }?>
                     </tbody>
-
+                    <tfoot>
+                        <tr>
+                            <td colspan='2'>Total Keseluruhan</td>
+                            <td><span>Rp <?=number_format( $total_debit, 2, ',', '.');?></span></td>
+                            <td><span>Rp <?=number_format( $total_kredit, 2, ',', '.');?></span></td>
+                            <?php
+                      
+                            ?>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
             <!-- /.card-body -->
@@ -218,4 +241,11 @@ error_reporting(0);
 
  $('#nominal').val(saldo);
  });
+
+ //var table = document.getElementById("example1"), sum_dbt = 0, sum_krd = 0;
+ //for(var i = 1; i < table.rows.length; i++){
+ //   sum_dbt = sum_dbt + parseInt(table.rows[i].cells[1].innerHTML);
+// }
+//    document.getElementById("dbt-sum").innerHTML = sum_dbt;
+//    console.log(sum_dbt);
 </script>
