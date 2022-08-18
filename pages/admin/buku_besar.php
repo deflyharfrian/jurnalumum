@@ -21,82 +21,80 @@ error_reporting(0);
 <div class="content">
     <div class="container-fluid">
 
-    
+
         <div class="card">
             <div class="card-header bg-purple">
                 <?php
-                 $queryt = "SELECT * FROM tb_kategori WHERE kode_kategori ='".$_GET['bukubesar']."'";
-                 $sqlt = mysqli_query($con, $queryt);
+                $queryt = "SELECT * FROM tb_kategori WHERE kode_kategori ='" . $_GET['bukubesar'] . "'";
+                $sqlt = mysqli_query($con, $queryt);
                 $akun = mysqli_fetch_array($sqlt);
                 ?>
                 <h3 class="card-title">Nama Akun : <b> <?php
-                if($akun['nama'] == "" ){
-                    echo"Semua Akun";
-                }else{
-                     echo $akun['nama']; 
-                }
-                ?></b></h3>
+                                                        if ($akun['nama'] == "") {
+                                                            echo "Semua Akun";
+                                                        } else {
+                                                            echo $akun['nama'];
+                                                        }
+                                                        ?></b></h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                
 
-                <form method="get" action=""> 
-        <table border="0">
-        <tr>
-     
-        <td>
-        <td>
-        <div id="form-akun">
-            <label>Akun</label><br>
-            <select name="bukubesar" class="form-control" width="250px">
-                <option value="">Pilih</option>
+
+                <form method="get" action="">
+                    <table border="0">
+                        <tr>
+
+                            <td>
+                            <td>
+                                <div id="form-akun">
+                                    <label>Akun</label><br>
+                                    <select name="bukubesar" class="form-control" width="250px">
+                                        <option value="">Pilih</option>
+                                        <?php
+                                        $query = "SELECT * FROM tb_kategori";
+                                        $sql = mysqli_query($con, $query);
+                                        while ($data = mysqli_fetch_array($sql)) {
+                                            echo '<option value="' . $data['kode_kategori'] . '">' . $data['nama'] . '</option>';
+                                        }
+                                        ?>
+
+                                    </select>
+
+                                </div>
+                            <td>
+                                <label>&nbsp;</label><br>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Tampilkan</button>
+                                <a href="index.php?bukubesar">
+                                    <div class="btn btn-danger"> <i class="fa fa-undo" aria-hidden="true"></i> Reset Filter</div>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <br>
+
+
                 <?php
-                $query = "SELECT * FROM tb_kategori"; 
-                $sql = mysqli_query($con, $query);
-                while($data = mysqli_fetch_array($sql)){
-                    echo '<option value="'.$data['kode_kategori'].'">'.$data['nama'].'</option>';
-                }
-                ?>
-                
-            </select>
-           
-        </div>
-        <td>
-        <label>&nbsp;</label><br>
-        <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Tampilkan</button>
-        <a href="index.php?bukubesar"> <div class="btn btn-danger" > <i class="fa fa-undo" aria-hidden="true"></i> Reset Filter</div></a>
-        </td>
-        </tr>
-        </table>
-    </form>
-    <br>
+                if ($_GET['bukubesar']) {
 
+                    echo '<b>Data Akun </b><br /><br />';
 
-    <?php
-    if($_GET['bukubesar']){
-     
-            echo '<b>Data Akun </b><br /><br />';
-        echo'<button type="button" class="btn bg-purple mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
-        <i class="fa fa-plus"></i> Tambah 
-    </button>';
-            $query = "SELECT * FROM tb_transaksi
+                    $query = "SELECT * FROM tb_transaksi
             LEFT JOIN tb_rekening AS rek ON tb_transaksi.id_rek = rek.id_rek
             LEFT JOIN tb_user AS USER ON tb_transaksi.user_id = user.id_user
             LEFT JOIN tb_kategori AS kateg ON tb_transaksi.id_kategori = kateg.kode_kategori
-            where kateg.kode_kategori ='".$_GET['bukubesar']."'";
-        }else{
-        echo '<b>Semua Data Akun</b><br /><br />';
-        echo'<button type="button" class="btn bg-purple mb-3" data-toggle="modal" data-target="#mdltambahtransaksi">
-        <i class="fa fa-plus"></i> Tambah Data
-    </button>';
-        $query = "SELECT * FROM tb_transaksi
+            where kateg.kode_kategori ='" . $_GET['bukubesar'] . "'";
+                } else {
+                    echo '<b>Semua Data Akun</b><br /><br />';
+
+                    $query = "SELECT * FROM tb_transaksi
         LEFT JOIN tb_rekening AS rek ON tb_transaksi.id_rek = rek.id_rek
         LEFT JOIN tb_user AS USER ON tb_transaksi.user_id = user.id_user
         LEFT JOIN tb_kategori AS kateg ON tb_transaksi.id_kategori = kateg.kode_kategori
-        where kateg.nama like '%".$akun['nama']."%'"; 
-    }
-    ?>
+        where kateg.nama like '%" . $akun['nama'] . "%'";
+                }
+                ?>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -111,25 +109,25 @@ error_reporting(0);
                     </thead>
                     <tbody>
                         <!--- Tampilkan Transaksi --->
-                      <tr>
-                                <?php
-					  $i = 1;
-    $sql = mysqli_query($con, $query);
-    $row = mysqli_num_rows($sql); 
-    if($row > 0){ 
-        while($data = mysqli_fetch_array($sql)){ 
-             echo "<td>".$i++."</td>";
-            echo "<td>".$data['tanggal']."</td>";
-            echo "<td>".$data['keterangan']."</td>";
-            echo "<td>".$data['nama']."</td>";
-            echo "<td>"."Rp ".number_format( $data['debit'], 2, ',', '.')."</td>";
-            echo "<td>"."Rp ".number_format( $data['kredit'], 2, ',', '.')."</td>";
-            echo "</tr>";
-        }
-    }else{ // Jika data tidak ada
-        echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
-    }
-    ?>
+                        <tr>
+                            <?php
+                            $i = 1;
+                            $sql = mysqli_query($con, $query);
+                            $row = mysqli_num_rows($sql);
+                            if ($row > 0) {
+                                while ($data = mysqli_fetch_array($sql)) {
+                                    echo "<td>" . $i++ . "</td>";
+                                    echo "<td>" . $data['tanggal'] . "</td>";
+                                    echo "<td>" . $data['keterangan'] . "</td>";
+                                    echo "<td>" . $data['nama'] . "</td>";
+                                    echo "<td>" . "Rp " . number_format($data['debit'], 2, ',', '.') . "</td>";
+                                    echo "<td>" . "Rp " . number_format($data['kredit'], 2, ',', '.') . "</td>";
+                                    echo "</tr>";
+                                }
+                            } else { // Jika data tidak ada
+                                echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
+                            }
+                            ?>
                     </tbody>
 
                 </table>
@@ -139,9 +137,9 @@ error_reporting(0);
 
 
 
-      
+
         <!-- /.card -->
-      
+
 
 
 
@@ -157,13 +155,13 @@ error_reporting(0);
                     </div>
                     <div class="modal-body">
                         <form method="POST" action='tambah_transaksi.php'>
-                        
+
                             <!-- TANGGAL -->
                             <div class="form-group">
                                 <label>Tanggal</label>
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input type="text" name="tanggal"  value="<?= date('Y-m-d') ?>" class="form-control datetimepicker-input" placeholder="Tanggal Transaksi" data-target="#reservationdate" />
-                                    <div class="input-group-append"  data-target="#reservationdate" data-toggle="datetimepicker">
+                                    <input type="text" name="tanggal" value="<?= date('Y-m-d') ?>" class="form-control datetimepicker-input" placeholder="Tanggal Transaksi" data-target="#reservationdate" />
+                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>
@@ -186,7 +184,7 @@ error_reporting(0);
 
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Rekening</label>
-                                <select name="rekening" class="form-control" id="id_rek" >
+                                <select name="rekening" class="form-control" id="id_rek">
                                     <option value="-">--pilih rekening--</option>
                                     <?php $sql_rek = mysqli_query($con, "SELECT * FROM tb_rekening");
                                     while ($data_rek = mysqli_fetch_array($sql_rek)) { ?>
@@ -211,14 +209,14 @@ error_reporting(0);
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Saldo Awal (Rp)</label>
-                                <input type="text" class="form-control" id="nominal" name="saldo_awal"  placeholder="Saldo Awal" readonly />
+                                <input type="text" class="form-control" id="nominal" name="saldo_awal" placeholder="Saldo Awal" readonly />
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Nominal (Rp)</label>
                                 <input type="text" class="form-control" name="saldo_akhir" placeholder="Nominal">
                             </div>
                             <input type="text" class="form-control" hidden name="tanggal_post" value="<?= date('Y-m-d H:i:s') ?>" placeholder="Nama Kategori">
-                            
+
 
                     </div>
                     <div class="modal-footer">
@@ -256,9 +254,9 @@ error_reporting(0);
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="edit_transaksi.php?id_transaksi=<?= $data2['id_transaksi'] ?>">        
-                               
-                            <div class="form-group">
+                            <form method="POST" action="edit_transaksi.php?id_transaksi=<?= $data2['id_transaksi'] ?>">
+
+                                <div class="form-group">
                                     <label for="exampleInputPassword1">No.</label>
                                     <input type="text" class="form-control" name="no" value="<?= $data2['id_transaksi'] ?>" placeholder="NO" readonly>
                                 </div>
@@ -287,10 +285,10 @@ error_reporting(0);
                 </div>
             </div>
         <?php } ?>
-<script type="text/javascript">
- $('#id_rek').on('click', function(){
-    const saldo = $('#id_rek option:selected').data('saldo');
+        <script type="text/javascript">
+            $('#id_rek').on('click', function() {
+                const saldo = $('#id_rek option:selected').data('saldo');
 
- $('#nominal').val(saldo);
- });
-</script>
+                $('#nominal').val(saldo);
+            });
+        </script>
