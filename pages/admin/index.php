@@ -11,7 +11,7 @@ if ($_SESSION['level'] == "") {
   header("location:../../index.php?pesan=belum_login");
 }
 $aa = $_SESSION['username'];
-$p = mysqli_query($con,"SELECT * FROM tb_user WHERE username='$aa'");
+$p = mysqli_query($con, "SELECT * FROM tb_user WHERE username='$aa'");
 $profil = mysqli_fetch_array($p);
 ?>
 
@@ -57,18 +57,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <style>
   body::-webkit-scrollbar {
-  width: 13px;
-}
- 
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
- 
-body::-webkit-scrollbar-thumb {
-  background-color: #5C37A0;
-  outline: 1px solid slategrey;
-}
+    width: 13px;
+  }
+
+  body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: #5C37A0;
+    outline: 1px solid slategrey;
+  }
 </style>
+
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
 
@@ -79,12 +80,12 @@ body::-webkit-scrollbar-thumb {
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-       
+
       </ul>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-    
+
 
 
 
@@ -225,12 +226,12 @@ body::-webkit-scrollbar-thumb {
           } else if (isset($_GET["rekening"])) {
             //rekening~
             include "rekening.php";
-          } else if(isset($_GET['bukubesar'])) {
+          } else if (isset($_GET['bukubesar'])) {
             //buku besar ~
             include "buku_besar.php";
-          } else if(isset($_GET['jurnalumum'])){
+          } else if (isset($_GET['jurnalumum'])) {
             include "jurnal_umum.php";
-           } else {
+          } else {
             include "dashboard.php";
           }
 
@@ -272,6 +273,7 @@ body::-webkit-scrollbar-thumb {
   <!-- REQUIRED SCRIPTS -->
 
   <!-- jQuery -->
+  <script src="../../plugins/jquery-ui/jquery-ui.min.js"></script>
   <script src="../../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -310,23 +312,57 @@ body::-webkit-scrollbar-thumb {
   <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
   <script>
-$(function () {
-    var url = window.location;
-    // for single sidebar menu
-    $('ul.nav-sidebar a').filter(function () {
-        return this.href == url;
-    }).addClass('active');
+    $(document).ready(function() { // Ketika halaman selesai di load
 
-    // for sidebar menu and treeview
-    $('ul.nav-treeview a').filter(function () {
+      $('#form-tanggal, #form-bulan, #form-tahun').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
+      $('#transaksi').change(function() { // Ketika user memilih filter
+        if ($(this).val() == '1') { // Jika filter nya 1 (per tanggal)
+          $('#form-bulan, #form-tahun').hide(); // Sembunyikan form bulan dan tahun
+          $('#form-tanggal').show(); // Tampilkan form tanggal
+        } else if ($(this).val() == '2') { // Jika filter nya 2 (per bulan)
+          $('#form-tanggal').hide(); // Sembunyikan form tanggal
+          $('#form-bulan, #form-tahun').show(); // Tampilkan form bulan dan tahun
+        } else { // Jika filternya 3 (per tahun)
+          $('#form-tanggal, #form-bulan').hide(); // Sembunyikan form tanggal dan bulan
+          $('#form-tahun').show(); // Tampilkan form tahun
+        }
+        $('#form-tanggal input, #form-bulan select, #form-tahun select').val(''); // Clear data pada textbox tanggal, combobox bulan & tahun
+      })
+      $('#jurnalumum').change(function() { // Ketika user memilih filter
+        if ($(this).val() == '1') { // Jika filter nya 1 (per tanggal)
+          $('#form-bulan, #form-tahun').hide(); // Sembunyikan form bulan dan tahun
+          $('#form-tanggal').show(); // Tampilkan form tanggal
+        } else if ($(this).val() == '2') { // Jika filter nya 2 (per bulan)
+          $('#form-tanggal').hide(); // Sembunyikan form tanggal
+          $('#form-bulan, #form-tahun').show(); // Tampilkan form bulan dan tahun
+        } else { // Jika filternya 3 (per tahun)
+          $('#form-tanggal, #form-bulan').hide(); // Sembunyikan form tanggal dan bulan
+          $('#form-tahun').show(); // Tampilkan form tahun
+        }
+        $('#form-tanggal input, #form-bulan select, #form-tahun select').val(''); // Clear data pada textbox tanggal, combobox bulan & tahun
+      })
+    })
+
+
+    $(function() {
+      var url = window.location;
+      // for single sidebar menu
+      $('ul.nav-sidebar a').filter(function() {
         return this.href == url;
-    }).parentsUntil(".nav-sidebar > .nav-treeview")
-        .css({'display': 'block'})
+      }).addClass('active');
+
+      // for sidebar menu and treeview
+      $('ul.nav-treeview a').filter(function() {
+          return this.href == url;
+        }).parentsUntil(".nav-sidebar > .nav-treeview")
+        .css({
+          'display': 'block'
+        })
         .addClass('menu-open').prev('a')
         .addClass('active');
-});
+    });
 
-$(function() {
+    $(function() {
       $("#example1").DataTable({
         "responsive": true,
         "lengthChange": false,
@@ -357,6 +393,7 @@ $(function() {
       //Datemask dd/mm/yyyy
       $('#datemask').inputmask('yyyy/mm/dd', {
         'placeholder': 'yyyy/mm/dd'
+
       })
       //Datemask2 mm/dd/yyyy
       $('#datemask2').inputmask('mm/dd/yyyy', {
@@ -368,6 +405,7 @@ $(function() {
       //Date picker
       $('#reservationdate').datetimepicker({
         format: 'L'
+
       });
       //Date picker
       $('#reservationdate2').datetimepicker({
